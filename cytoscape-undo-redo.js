@@ -223,6 +223,7 @@ export default function (cytoscape) {
         var lastMouseDownNodeInfo = null;
 
         cy.on("grab", "node", function () {
+            this.canMakeThisDragNotUndoableForAllNodes = false;
             if (typeof undoable === 'function' ? undoable.call(this) : undoable) {
                 lastMouseDownNodeInfo = {};
                 lastMouseDownNodeInfo.lastMouseDownPosition = {
@@ -235,6 +236,9 @@ export default function (cytoscape) {
         cy.on("free", "node", function () {
 
             var instance = getScratch(cy, 'instance');
+
+            this.canMakeThisDragNotUndoableForAllNodes = true;
+            this.makeThisDragNotUndoableForAllNodes = () => (lastMouseDownNodeInfo = null);
 
             if (typeof undoable === 'function' ? undoable.call(this) : undoable) {
                 if (lastMouseDownNodeInfo == null) {
