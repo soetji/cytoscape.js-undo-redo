@@ -2,9 +2,13 @@
   "name": "cytoscape-undo-redo",
   "version": "1.3.3",
   "description": "Manages undo-redo actions",
-  "main": "cytoscape-undo-redo.js",
+  "main": "./index.cjs",
   "spm": {
-    "main": "cytoscape-undo-redo.js"
+    "main": "./index.cjs"
+  },
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
