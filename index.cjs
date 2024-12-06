@@ -1,4 +1,4 @@
-import register from './cytoscape-undo-redo';
+const register = await import('./cytoscape-undo-redo');
 
 (function () {
   'use strict';
